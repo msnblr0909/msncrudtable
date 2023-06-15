@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
   const [party, setParty] = useState("");
-  const [userid, setUserId] = useState(null);
+  const [userid, setUserId] = useState("");
   useEffect(() => {
     getUser();
   }, []);
@@ -15,30 +15,47 @@ function App() {
       result.json().then((resp) => {
         console.warn(resp);
         setData(resp);
-        setName(resp[0].name);
-        setParty(resp[0].party);
-        setUserId(resp[0].id);
+        setName(resp[0].name)
+        setParty(resp[0].party)
+        setUserId(resp[0].id)
       });
     });
   }
 
   function selectUsers(id) {
-    console.log(data[id - 1]);
-    let item = data[id - 0];
-    setName(item.name);
-    setParty(item.party);
-    setUserId(item.id);
+    // console.log(data[id - 1]);
+    let item = data[id-1];
+    setName(item.name)
+    setParty(item.party)
+    setUserId(item.id)
   }
   function deleteUser(id) {
     // console.log(id);
     fetch(`http://localhost:4000/users/${id}`, {
       method: "DELETE",
-    }).then((result1) => {
-      result1.json().then((resp1) => {
-        console.log(resp1);
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.log(resp);
         getUser();
       });
     });
+  }
+  function updateUser(){
+    let item={name,party,userid};
+        // console.log(id);
+        fetch(`http://localhost:4000/users/${userid}`, {
+          method: "PUT",
+          headers:{
+            "Accept":"application/json",
+            "Content-Type": "application/json"
+          },
+          body : JSON.stringify(item)
+        }).then((result1) => {
+          result1.json().then((resp1) => {
+            console.log(resp1);
+            getUser()
+          });
+        });
   }
   return (
     <>
@@ -81,13 +98,13 @@ function App() {
         </div>
         {/* table ended */}
         <div className="form-style">
-          <input type="name" value={name} />
+          <input type="name" value={name} onChange={(e)=>setName(e.target.value)} />
           <br />
           <br />
-          <input type="party" value={party} />
+          <input type="party" value={party} onChange={(e)=>setParty(e.target.value)}/>
           <br />
           <br />
-          <button>Update</button>
+          <button onClick={updateUser}>Update</button>
         </div>
       </div>
     </>

@@ -1,29 +1,32 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "Raghvendra",
-      "party": "BJP"
+      "name": "Raghvendra ",
+      "party": "BJP 1",
+      "userid": 1,
+      "id": 1
     },
     {
-      "id": 4,
       "name": "Manjunath",
-      "party": "BJP"
+      "party": "YJP",
+      "id": 2
     },
     {
-      "id": 5,
-      "name": "Manjunath",
-      "party": "BJP"
-    },
-    {
-      "id": 6,
-      "name": "Satish",
-      "party": "JDS"
-    },
-    {
-      "id": 7,
       "name": "Naveen",
-      "party": "JDS"
+      "party": "JDS",
+      "id": 3
+    },
+    {
+      "name": "Satish ",
+      "party": "JDS",
+      "userid": 4,
+      "id": 4
+    },
+    {
+      "name": "Ravikuamr",
+      "party": "JDS",
+      "userid": 5,
+      "id": 5
     }
   ]
 }
